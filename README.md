@@ -1,3 +1,3 @@
 # koth-autopwn
-autpwn for all machines of koth
-btw demo
+autopwn of some koth machines
+https://tryhackme.com/games/koth
