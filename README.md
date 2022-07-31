@@ -1,3 +1,3 @@
 # koth-autopwn
-autopwn of some koth machines
+autopwn for some koth machines
 https://tryhackme.com/games/koth
