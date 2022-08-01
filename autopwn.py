@@ -126,19 +126,19 @@ if __name__ == "__main__":
     else:
         machineName = sys.argv[1]
         ip = sys.argv[2]
-        if machineName == "Tyler" or machineName == "tyler":
+        if machineName.lower() == "tyler":
             Tyler()
-        if machineName == "Production" or machineName == "production":
+        if machineName.lower() == "production":
             Production()
-        if machineName == "Shrek" or machineName == "shrek":
+        if machineName.lower() == "shrek":
             Shrek()
-        if machineName == "Panda" or machineName == "panda":
+        if machineName.lower() == "panda":
             Panda()
-        if machineName == "H1" or machineName == "h1":
+        if machineName.lower == "h1":
             H1()
-        if machineName == "Fortune" or machineName == "fortune":
+        if machineName.lower() == "fortune":
             Fortune()
-        if machineName == "Lion" or machineName == "lion":
+        if machineName == "lion":
             Lion()
         else:
             print("[!] Invalid Machine Name")
