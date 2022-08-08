@@ -2,10 +2,11 @@ from pwn import *
 import requests
 import os
 import ftplib
+import argparse
 
 # machineName = input("Enter Machine Name: ")
 sess = requests.session()
-usage = f"Usage: {sys.argv[0]} <Machine Name> <Machine Ip>"
+usage = f"Usage: {sys.argv[0]} -n <Machine Name> -i <Machine Ip>"
 
 # -------------------------------------------------- Shrek -------------------------------------------------- #
 def Shrek():
@@ -121,25 +122,29 @@ def Lion():
     print(command)
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3 :
-        print(usage)
+
+    parser = argparse.ArgumentParser(description='Koth-Autopwn', usage=usage)
+    parser.add_argument('-i', help='asd', required=True)
+    parser.add_argument('-n', help='asd', required=True)
+    args = parser.parse_args()
+
+    machineName = args.n
+    ip = args.i
+
+    if machineName.lower() == "tyler":
+        Tyler()
+    if machineName.lower() == "production":
+        Production()
+    if machineName.lower() == "shrek":
+        Shrek()
+    if machineName.lower() == "panda":
+        Panda()
+    if machineName.lower == "h1":
+        H1()
+    if machineName.lower() == "fortune":
+        Fortune()
+    if machineName == "lion":
+        Lion()
     else:
-        machineName = sys.argv[1]
-        ip = sys.argv[2]
-        if machineName.lower() == "tyler":
-            Tyler()
-        if machineName.lower() == "production":
-            Production()
-        if machineName.lower() == "shrek":
-            Shrek()
-        if machineName.lower() == "panda":
-            Panda()
-        if machineName.lower == "h1":
-            H1()
-        if machineName.lower() == "fortune":
-            Fortune()
-        if machineName == "lion":
-            Lion()
-        else:
-            print("[!] Invalid Machine Name")
-            exit()
+        print("[!] Invalid Machine Name")
+        exit()
