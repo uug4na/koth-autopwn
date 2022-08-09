@@ -6,7 +6,7 @@ import argparse
 
 # machineName = input("Enter Machine Name: ")
 sess = requests.session()
-usage = f"Usage: {sys.argv[0]} -n <Machine Name> -i <Machine Ip>"
+usage = f"{sys.argv[0]} -n/--name <Machine Name> -i/--ip <Machine Ip>"
 
 # -------------------------------------------------- Shrek -------------------------------------------------- #
 def Shrek():
@@ -134,8 +134,8 @@ def spaceJam():
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='Koth-Autopwn', usage=usage)
-    parser.add_argument('-i', help='asd', required=True)
-    parser.add_argument('-n', help='asd', required=True)
+    parser.add_argument('-i', '--ip', required=True)
+    parser.add_argument('-n', '--name', required=True)
     args = parser.parse_args()
 
     machineName = args.n
