@@ -1,2 +1,2 @@
 # koth-autopwn
->Usage: autopwn.py -n $name -i $ip
+Usage: autopwn.py -n <machineName> -i <machineIp>
