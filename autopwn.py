@@ -148,7 +148,6 @@ def spaceJam():
 #    os.system("ssh -i id_rsa gcrawford@hackers.thm")
 
 if __name__ == "__main__":
-    
     machineName = sys.argv[1]
     ip = sys.argv[2]
     
