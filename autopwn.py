@@ -4,7 +4,6 @@ import os
 import ftplib
 import argparse
 
-# machineName = input("Enter Machine Name: ")
 sess = requests.session()
 usage = f"{sys.argv[0]} <Machine Name> <Machine Ip>"
 
