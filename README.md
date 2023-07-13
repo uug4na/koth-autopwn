@@ -1,3 +1,4 @@
 # koth-autopwn
-## king of the hill
->Usage: autopwn.py machineName machineIp 
+### script for hack king of the hill machines 
+#### usage
+>autopwn.py machineName machineIp 
